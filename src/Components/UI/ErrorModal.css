@@ -1,0 +1,35 @@
+.modalBack {
+  z-index: 10;
+  position: fixed;
+}
+.modalContent {
+  background-color: white;
+  border-radius: 10px;
+  border: solid black 3px;
+  margin: 4rem 0 0 2rem;
+  background-color: blueviolet;
+}
+.errorTitle {
+  color: white;
+  margin: 1rem;
+}
+.errorBody {
+  background-color: white;
+  padding: 0.3rem 1rem 1rem 1rem;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+p {
+  margin-right: 21rem;
+}
+h2 {
+  margin: 0;
+}
+.errorButton {
+  background-color: #548cff;
+  color: white;
+  border-radius: 7px;
+  padding: 0.5rem;
+  border-color: #548cff;
+  margin-left: 36rem;
+}

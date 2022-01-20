@@ -1,0 +1,22 @@
+.userInputForm div{
+    display: flex;
+    flex-direction: column;
+}
+.nameInput,.ageInput{
+    margin-bottom: 1rem;
+}
+.nameInput label,.ageInput label{
+    margin-bottom: 0.5rem;
+}
+.formBody{
+    background-color: white;
+    border-radius: 7px;
+    padding: 1rem;
+}
+.inputSubmit{
+    background-color: #548CFF;
+    color: white;
+    border-radius: 7px;
+    padding: 0.5rem;
+    border-color: #548CFF;
+}

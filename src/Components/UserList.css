@@ -1,0 +1,11 @@
+.userlist{
+    background-color: white;
+    border-radius: 7px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+li{
+    list-style: none;
+    /* list-style-position: inside;
+    border: 1px gray solid; */
+}
