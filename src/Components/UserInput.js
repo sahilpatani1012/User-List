@@ -1,33 +1,40 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ErrorModal from "./UI/ErrorModal";
 import "./UserInput.css";
 
 const UserInput = (props) => {
-  const [username, setUsername] = useState("");
-  const usernameHandler = (event) => {
-    setUsername(event.target.value);
-  };
 
-  const [age, setAge] = useState("");
-  const ageHandler = (event) => {
-    setAge(event.target.value);
-  };
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
+
+  // const [username, setUsername] = useState("");  State logic for userinput and handling it
+  // const usernameHandler = (event) => {
+  //   setUsername(event.target.value);
+  // };
+
+  // const [age, setAge] = useState("");
+  // const ageHandler = (event) => {
+  //   setAge(event.target.value);
+  // };
 
   const [error, setError] = useState(false);
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(username, age);
-    if (username.trim().length === 0 || age.trim().length === 0) setError(true);
-    if (+age < 1) return; // The + before the age converts the string age to number age
+    const refName = nameInputRef.current.value; // Ref code for input 
+    const refAge = ageInputRef.current.value;
+    if (refName.trim().length === 0 || refAge.trim().length === 0) setError(true);
+    if (+refAge < 1) return; // The + before the age converts the string age to number age
     const user = {
-      name: username,
-      age: age,
+      name: refName, //Using ref value instead of state value
+      age: refAge,
       id: Math.random().toString(),
     };
     props.UserFetch(user);
-    setUsername("");
-    setAge("");
+    nameInputRef.current.value = ""; //These statements manipulate the DOM elements which is not recommended using refs but it's fine here :)
+    ageInputRef.current.value = "";
+    // setUsername("");
+    // setAge("");
   };
 
   return (
@@ -47,10 +54,11 @@ const UserInput = (props) => {
             </label>
             <input
               autoComplete="off"
-              onChange={usernameHandler}
+              // onChange={usernameHandler}
               id="username"
               type="text"
-              value={username}
+              // value={username}
+              ref={nameInputRef}
             />
           </div>
           <div className="ageInput">
@@ -59,10 +67,11 @@ const UserInput = (props) => {
             </label>
             <input
               autoComplete="off"
-              onChange={ageHandler}
-              value={age}
+              // onChange={ageHandler}
+              // value={age}
               id="age"
               type="number"
+              ref={ageInputRef}
             />
           </div>
           <button className="inputSubmit" type="submit">
